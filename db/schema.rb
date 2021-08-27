@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_27_120502) do
+ActiveRecord::Schema.define(version: 2021_08_27_120710) do
+
+  create_table "group_members", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.integer "member_id", null: false
+    t.integer "role", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_group_members_on_group_id"
+    t.index ["member_id"], name: "index_group_members_on_member_id"
+  end
 
   create_table "groups", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -22,4 +32,6 @@ ActiveRecord::Schema.define(version: 2021_08_27_120502) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "group_members", "groups"
+  add_foreign_key "group_members", "members"
 end
