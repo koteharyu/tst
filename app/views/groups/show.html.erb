@@ -19,8 +19,9 @@
   </tbody>
 </table>
 
-<%= link_to "幹事を設定する", operation_members_role_path(@group), method: :put%>
-
+<% if @group.members.length > 1 %>
+  <%= link_to "幹事を設定する", operation_members_role_path(@group), method: :put%>
+<% end %>
 <br>
 
 <h3>グループに未参加のメンバー</h3>
