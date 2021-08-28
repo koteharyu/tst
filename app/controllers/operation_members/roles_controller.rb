@@ -7,7 +7,7 @@ class OperationMembers::RolesController < ApplicationController
       return
     end
     current_organizer = @group.group_members&.find_by(group_id: @group.id, role: 1)
-    target_member = @group.group_members&.where(group_id: @group.id, role: 0).sample
+    target_member = @group.set_target_member
     if current_organizer.nil?
       target_member.organizer!
     else
