@@ -1,0 +1,5 @@
+<tr>
+  <td><%= group_member.name%></td>
+  <td><%= group_member.group_members.find_by(group_id: @group.id, member_id: group_member.id).role %></td>
+  <td><%= link_to "脱退", "#"%></td>
+</tr>

@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Group.create!(name: "1 group")
+
+10.times do |i|
+  Member.create!(name: "#{i} member")
+end
+
+GroupMember.create!(group_id: 1, member_id: 1)
+GroupMember.create!(group_id: 1, member_id: 2)
+GroupMember.create!(group_id: 1, member_id: 3)
+GroupMember.create!(group_id: 1, member_id: 4)

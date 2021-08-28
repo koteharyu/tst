@@ -2,3 +2,37 @@
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
+
+<h1><%= @group.name%>のメンバー一覧</h1>
+<h3>グループに参加中のメンバー</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: 'members/group_member', collection: @group_members %>
+  </tbody>
+</table>
+
+<%= link_to "幹事を設定する", "#"%>
+
+<br>
+
+<h3>グループに未参加のメンバー</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: 'members/not_participated_member', collection: @not_participate_members %>
+  </tbody>
+</table>
