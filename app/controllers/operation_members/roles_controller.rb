@@ -1,11 +1,8 @@
 class OperationMembers::RolesController < ApplicationController
   before_action :set_group
+  before_action :less_than_2_members
 
   def update
-    if @group.members.length < 2
-      redirect_to group_path(@group), notice: "メンバーを追加してください"
-      return
-    end
     current_organizer = @group.set_current_organizer
     target_member = @group.set_target_member
     if current_organizer.nil?
@@ -21,5 +18,11 @@ class OperationMembers::RolesController < ApplicationController
 
   def set_group
     @group = Group.find(params[:id])
+  end
+
+  def less_than_2_members
+    if @group.members.length < 2
+      redirect_to group_path(@group), notice: "メンバーを追加してください"
+    end
   end
 end
