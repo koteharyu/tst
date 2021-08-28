@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to "groups", groups_path%>
+<%= link_to "members", members_path%>
+
 <h1>Members</h1>
 
 <table>
@@ -12,6 +15,7 @@
   <tbody>
     <% @members.each do |member| %>
       <tr>
+        <td><%= member.name %></td>
         <td><%= link_to 'Show', member %></td>
         <td><%= link_to 'Edit', edit_member_path(member) %></td>
         <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
