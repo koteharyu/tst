@@ -15,6 +15,6 @@ class Group < ApplicationRecord
   end
 
   def set_target_member_name(target_member)
-    self.members.find(target_member.member_id)
+    self.members.find(target_member.member_id).name
   end
 end
