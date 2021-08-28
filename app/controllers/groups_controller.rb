@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1 or /groups/1.json
   def show
-    @group_members = @group.members.order(:id)
+    @group_members = @group.members.order_by
     members = Member.all
     @not_participate_members = members.reject{|member| @group_members.ids.include?(member.id) }
   end
