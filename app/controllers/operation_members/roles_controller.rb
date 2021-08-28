@@ -6,7 +6,7 @@ class OperationMembers::RolesController < ApplicationController
       redirect_to group_path(@group), notice: "メンバーを追加してください"
       return
     end
-    current_organizer = @group.group_members&.find_by(group_id: @group.id, role: 1)
+    current_organizer = @group.set_current_organizer
     target_member = @group.set_target_member
     if current_organizer.nil?
       target_member.organizer!
