@@ -11,7 +11,8 @@ class OperationMembers::RolesController < ApplicationController
       current_organizer.regular!
       target_member.organizer!
     end
-    redirect_to group_path(@group), notice: '幹事を設定しました'
+    target_member_name = @group.members.find(target_member.member_id)
+    redirect_to group_path(@group), notice: "幹事は#{target_member_name.name}さん　に決まりました"
   end
 
   private
