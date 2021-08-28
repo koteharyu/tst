@@ -8,7 +8,7 @@ class OperationMembers::ParticipatesController < ApplicationController
   end
 
   def destroy
-    @group.group_members.find_by(group_id: @group.id, member_id: participate_params.to_i).destroy
+    @group.group_members.find_by(group_id: @group.id, member_id: participate_params).destroy
     redirect_to group_path(@group)
   end
 
@@ -19,6 +19,6 @@ class OperationMembers::ParticipatesController < ApplicationController
   end
 
   def participate_params
-    params[:member_id]
+    params[:member_id].to_i
   end
 end
