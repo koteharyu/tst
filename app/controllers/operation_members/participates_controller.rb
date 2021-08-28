@@ -4,12 +4,12 @@ class OperationMembers::ParticipatesController < ApplicationController
   def update
     new_member_ids = @group.member_ids << participate_params
     @group.update(member_ids: new_member_ids)
-    redirect_to group_path(@group)
+    redirect_to group_path(@group), notice: 'メンバーが増えました'
   end
 
   def destroy
     @group.group_members.find_by(group_id: @group.id, member_id: participate_params).destroy
-    redirect_to group_path(@group)
+    redirect_to group_path(@group), notice: 'メンバーが減りました'
   end
 
   private
