@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :participates, only: [:update, :destroy]
     resources :roles, only: [:update]
   end
+  resources :group_members, only: [:update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
