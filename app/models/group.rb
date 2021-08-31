@@ -9,7 +9,7 @@ class Group < ApplicationRecord
   end
 
   def set_target_member
-    group_members&.where(role: "regular").sample
+    group_members&.regular.sample
   end
 
   def set_target_member_name(target_member)
