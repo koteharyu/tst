@@ -5,11 +5,11 @@ class Group < ApplicationRecord
   validates :name, presence: true
 
   def set_current_organizer
-    group_members&.find_by(group_id: id, role: 1)
+    group_members&.find_by(role: "organizer")
   end
 
   def set_target_member
-    group_members&.where(group_id: id, role: 0).sample
+    group_members&.where(role: "regular").sample
   end
 
   def set_target_member_name(target_member)
