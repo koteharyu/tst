@@ -9,8 +9,8 @@ class GroupsController < ApplicationController
   # GET /groups/1 or /groups/1.json
   def show
     @group_members = @group.members.order_by
-    members = Member.all
-    @not_participate_members = members.reject{|member| @group_members.ids.include?(member.id) }
+    group_member_ids = @group_members.pluck(:id)
+    @not_participated_members = Member.where.not(id: group_member_ids)
   end
 
   # GET /groups/new

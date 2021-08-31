@@ -4,8 +4,6 @@ class Group < ApplicationRecord
 
   validates :name, presence: true
 
-  # scope :set_target_member, -> { joins(:group_members)&.where(group_id: @group.id, role: 0).sample}
-
   def set_current_organizer
     group_members&.find_by(group_id: id, role: 1)
   end
