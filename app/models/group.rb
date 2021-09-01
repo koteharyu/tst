@@ -5,7 +5,7 @@ class Group < ApplicationRecord
   validates :name, presence: true
 
   def set_current_organizer
-    group_members&.find_by(role: "organizer")
+    group_members&.organizer.first
   end
 
   def set_target_member
