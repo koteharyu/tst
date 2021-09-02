@@ -2,13 +2,15 @@ class OperationMembers::ParticipatesController < ApplicationController
   before_action :set_group
 
   def update
-    new_member_ids = @group.member_ids << participate_params
-    @group.update(member_ids: new_member_ids)
+    member = Member.find(params[:member_id])
+    @group.participate(member)
     redirect_to group_path(@group), notice: 'メンバーが増えました'
   end
 
   def destroy
-    @group.group_members.find_by(group_id: @group.id, member_id: participate_params).destroy
+    # member = GroupMember.find_by(group_id: @group.id, member_id: params[:member_id]).member
+    member = @group.members.find(params[:member_id])
+    @group.withdraw(member)
     redirect_to group_path(@group), notice: 'メンバーが減りました'
   end
 

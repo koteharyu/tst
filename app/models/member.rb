@@ -4,6 +4,4 @@ class Member < ApplicationRecord
   has_many :role, through: :group_members
 
   validates :name, presence: true
-
-  scope :order_by, -> { order(:created_at) }
 end
