@@ -23,4 +23,10 @@ class Group < ApplicationRecord
   def withdraw(member)
     members.destroy(member)
   end
+
+  def not_participated_members
+    Member.where.not(id: member_ids)
+  end
+
+
 end
