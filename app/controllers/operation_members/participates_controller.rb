@@ -1,7 +1,8 @@
 class OperationMembers::ParticipatesController < ApplicationController
-  before_action :set_group
+  before_action :set_group, only: [:destroy]
 
-  def update
+  def create
+    @group = Group.find(params[:group_id])
     member = Member.find(params[:member_id])
     @group.participate(member)
     redirect_to group_path(@group), notice: 'メンバーが増えました'

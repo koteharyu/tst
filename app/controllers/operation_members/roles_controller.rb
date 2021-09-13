@@ -2,7 +2,7 @@ class OperationMembers::RolesController < ApplicationController
   before_action :set_group
   before_action :less_than_2_members
 
-  def update
+  def create
     current_organizer = @group.set_current_organizer
     target_member = @group.set_target_member
     if current_organizer.nil?
@@ -18,7 +18,7 @@ class OperationMembers::RolesController < ApplicationController
   private
 
   def set_group
-    @group = Group.find(params[:id])
+    @group = Group.find(params[:group_id])
   end
 
   def less_than_2_members
