@@ -4,15 +4,15 @@ class Group < ApplicationRecord
 
   validates :name, presence: true
 
-  def set_current_organizer
+  def current_organizer
     group_members&.organizer.first
   end
 
-  def set_target_member
+  def target_member
     group_members&.regular.sample
   end
 
-  def set_target_member_name(target_member)
+  def target_member_name(target_member)
     target_member.member.name
   end
 
@@ -27,6 +27,4 @@ class Group < ApplicationRecord
   def not_participated_members
     Member.where.not(id: member_ids)
   end
-
-
 end
