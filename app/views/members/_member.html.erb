@@ -1,0 +1,5 @@
+<tr>
+  <td><%= member.name%></td>
+  <td><%= link_to "Edit", edit_member_path(member)%></td>
+  <td><%= link_to "Delete", member_path(member), method: :delete, data: { confirm: "are you sure?" } %></td>
+</tr>

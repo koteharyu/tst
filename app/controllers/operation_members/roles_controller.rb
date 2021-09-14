@@ -3,15 +3,15 @@ class OperationMembers::RolesController < ApplicationController
   before_action :less_than_2_members
 
   def create
-    current_organizer = @group.set_current_organizer
-    target_member = @group.set_target_member
+    current_organizer = @group.current_organizer
+    target_member = @group.target_member
     if current_organizer.nil?
       target_member.organizer!
     else
       current_organizer.regular!
       target_member.organizer!
     end
-    target_member_name = @group.set_target_member_name(target_member)
+    target_member_name = @group.target_member_name(target_member)
     redirect_to group_path(@group), notice: "幹事は #{target_member_name}さん に決まりました"
   end
 
